@@ -1,0 +1,164 @@
+✅ 1. AUTH Routes
+➤ POST /api/auth/register
+Body (JSON):
+{
+  "username": "john_doe",
+  "email": "john@example.com",
+  "password": "123456",
+  "profileImage": "https://via.placeholder.com/150"
+}
+Response:
+{
+  "message": "User registered successfully",
+  "token": "jwt_token_here"
+}
+
+
+➤ POST /api/auth/login
+Body (JSON):
+{
+  "email": "john@example.com",
+  "password": "123456"
+}
+Response:
+{
+  "message": "Login successful",
+  "token": "jwt_token_here"
+}
+
+
+➤ GET /api/auth/profile
+Headers:
+Authorization: Bearer <jwt_token_here>
+Response:
+{
+  "_id": "user_id",
+  "username": "john_doe",
+  "email": "john@example.com",
+  "profileImage": "https://via.placeholder.com/150",
+  "role": "user"
+}
+
+
+
+📝 2. POST Routes
+
+
+➤ POST /api/posts
+Headers:
+Authorization: Bearer <jwt_token_here>
+Body:
+{
+  "title": "My First Post",
+  "content": "This is the content of the post",
+  "image": "https://via.placeholder.com/300"
+}
+Response:
+{
+  "message": "Post created successfully",
+  "post": {
+    "_id": "post_id",
+    "title": "My First Post",
+    "content": "This is the content of the post"
+  }
+}
+
+
+➤ GET /api/posts
+Query (optional):
+?page=1&limit=10
+
+Response:
+{
+  "totalPages": 1,
+  "currentPage": 1,
+  "posts": [
+    {
+      "_id": "post_id",
+      "title": "My First Post",
+      "likes": 5
+    }
+  ]
+}
+
+
+➤ GET /api/posts/:id
+Response:
+{
+  "_id": "post_id",
+  "title": "My First Post",
+  "content": "This is the content",
+  "author": {
+    "_id": "user_id",
+    "username": "john_doe"
+  },
+  "comments": [],
+  "likes": ["user_id"]
+}
+
+
+➤ PUT /api/posts/:id
+Headers:
+Authorization: Bearer <jwt_token>
+Body:
+{
+  "title": "Updated Title",
+  "content": "Updated content"
+}
+
+
+➤ DELETE /api/posts/:id
+Headers:
+Authorization: Bearer <jwt_token>
+Response:
+{ "message": "Post deleted successfully" }
+
+
+➤ PUT /api/posts/:id/like
+Toggle Like/Unlike
+Headers:
+Authorization: Bearer <jwt_token>
+Response:
+{ "message": "Post liked" }
+// or
+{ "message": "Post unliked" }
+
+
+➤ GET /api/posts/search?query=First&page=1
+Response:
+{
+  "posts": [
+    {
+      "_id": "post_id",
+      "title": "My First Post"
+    }
+  ]
+}
+
+
+
+💬 3. COMMENT Routes
+➤ POST /api/comments/:postId
+Headers:
+Authorization: Bearer <jwt_token>
+Body:
+{ "content": "Great post!" }
+Response:
+{
+  "message": "Comment added",
+  "comment": {
+    "_id": "comment_id",
+    "content": "Great post!"
+  }
+}
+
+
+
+☁️ 4. Image Upload (Cloudinary)
+➤ POST /api/upload
+Form-Data:
+Key: file (type: File)
+Response:
+{
+  "url": "https://res.cloudinary.com/.../image.jpg"
+}
