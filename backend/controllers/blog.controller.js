@@ -1,4 +1,5 @@
 import Blog from "../models/Blog.js";
+import Comment from "../models/Comment.js";
 
 import cloudinary from '../utils/cloudinary.js';
 
@@ -43,8 +44,21 @@ export const createBlog = async (req, res) => {
 // Get All Public Blogs
 export const getPublicBlogs = async (req, res) => {
   try {
-    const blogs = await Blog.find({ status: "public" }).populate("author", "name avatar");
-    res.json(blogs);
+    const blogs = await Blog.find({ status: "public" })
+      .populate("author", "name avatar");
+
+    // ✅ Add comment count for each blog
+    const blogsWithComments = await Promise.all(
+      blogs.map(async (blog) => {
+        const commentCount = await Comment.countDocuments({ post: blog._id });
+        return {
+          ...blog.toObject(),
+          commentCount,
+        };
+      })
+    );
+
+    res.json(blogsWithComments);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -59,7 +73,8 @@ export const getBlogById = async (req, res) => {
     const isOwner = req.user && blog.author._id.toString() === req.user._id.toString();
     const isAdmin = req.user && req.user.role === "admin";
 
-    if (blog.status === "private" && !isOwner && !isAdmin) {
+    // ✅ If blog is private or draft, only owner/admin can access
+    if ((blog.status === "private" || blog.status === "draft") && !isOwner && !isAdmin) {
       return res.status(403).json({ message: "Unauthorized" });
     }
 
@@ -68,6 +83,10 @@ export const getBlogById = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
+
+
+
 
 // Get Current User's Blogs
 export const getMyBlogs = async (req, res) => {
@@ -153,9 +172,6 @@ export const getAllBlogsAdmin = async (req, res) => {
 };
 
 
-
-
-
 // Filter blogs by tag or category
 export const getBlogsByTagOrCategory = async (req, res) => {
   try {
@@ -174,9 +190,7 @@ export const getBlogsByTagOrCategory = async (req, res) => {
 };
 
 
-
 // like blog count
-
 export const toggleLikeBlog = async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id);

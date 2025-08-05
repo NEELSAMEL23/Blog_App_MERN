@@ -1,78 +1,65 @@
 // src/context/AuthContext.jsx
 import { createContext, useContext, useEffect, useState } from "react";
-import { getProfileService, loginService, registerService } from "../Services/authService";
+import {
+    getProfileService,
+    loginService,
+    registerService,
+} from "../Services/authService";
 
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(() => {
-        const saved = localStorage.getItem("authUser");
-        return saved ? JSON.parse(saved) : null;
-    });
+    const [user, setUser] = useState(null);
     const [token, setToken] = useState(() => localStorage.getItem("authToken"));
     const [loading, setLoading] = useState(true);
 
-    // Load profile on first mount if token exists
     useEffect(() => {
         const loadUser = async () => {
+            if (!token) return setLoading(false);
             try {
-                if (token && !user) {
-                    const data = await getProfileService();
-                    setUser(data);
-                    localStorage.setItem("authUser", JSON.stringify(data));
-                }
-            } catch (e) {
-                console.error(e);
+                const data = await getProfileService();
+                setUser(data);
+                localStorage.setItem("authUser", JSON.stringify(data));
+            } catch (err) {
+                console.error("Auto-login failed:", err);
                 logout();
             } finally {
                 setLoading(false);
             }
         };
-        loadUser();
-    }, [token]); // eslint-disable-line
 
-    const login = async (email, password) => {
-        const data = await loginService({ email, password });
-        setToken(data.token);
-        localStorage.setItem("authToken", data.token);
-        setUser({
+        loadUser();
+    }, [token]);
+
+    const storeAuthData = (data) => {
+        const userInfo = {
             _id: data._id,
             name: data.name,
             email: data.email,
+            avatar: data.avatar,
             role: data.role,
-        });
-        localStorage.setItem(
-            "authUser",
-            JSON.stringify({
-                _id: data._id,
-                name: data.name,
-                email: data.email,
-                role: data.role,
-            })
-        );
-        return data;
+        };
+        setUser(userInfo);
+        setToken(data.token);
+        localStorage.setItem("authToken", data.token);
+        localStorage.setItem("authUser", JSON.stringify(userInfo));
     };
 
-    const register = async (payload) => {
-        const data = await registerService(payload);
-        setToken(data.token);
-        localStorage.setItem("authToken", data.token);
-        setUser({
-            _id: data._id,
-            name: data.name,
-            email: data.email,
-            role: data.role,
-        });
-        localStorage.setItem(
-            "authUser",
-            JSON.stringify({
-                _id: data._id,
-                name: data.name,
-                email: data.email,
-                role: data.role,
-            })
-        );
-        return data;
+    const login = async (email, password) => {
+        try {
+            const data = await loginService({ email, password });
+            storeAuthData(data);
+            return data;
+        } catch (err) {
+            logout();
+            throw err;
+        }
+    };
+
+    const register = async (formData) => {
+        const data = await registerService(formData);
+        storeAuthData(data);
+        return data; // 👈 Return full data including role
     };
 
     const logout = () => {
@@ -82,8 +69,28 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem("authUser");
     };
 
+    const refreshProfile = async () => {
+        try {
+            const data = await getProfileService();
+            setUser(data);
+            localStorage.setItem("authUser", JSON.stringify(data));
+        } catch (err) {
+            console.error("Failed to refresh profile:", err);
+        }
+    };
+
     return (
-        <AuthContext.Provider value={{ user, token, loading, login, register, logout }}>
+        <AuthContext.Provider
+            value={{
+                user,
+                token,
+                loading,
+                login,
+                register,
+                logout,
+                refreshProfile,
+            }}
+        >
             {children}
         </AuthContext.Provider>
     );

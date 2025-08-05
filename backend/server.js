@@ -1,6 +1,6 @@
 // server.js
 import dotenv from "dotenv";
-dotenv.config(); // 💥 FIRST LINE
+dotenv.config();
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
@@ -12,17 +12,18 @@ import commentRoutes from "./routes/comment.routes.js";
 
 import { errorHandler, notFound } from "./middleware/error.middleware.js";
 
-
 // Connect to MongoDB
 connectDB();
 
-// Initialize app
 const app = express();
 
 // Middleware
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
+
+// ✅ Serve static uploads folder
+app.use("/uploads", express.static("uploads"));
 
 // Routes
 app.use("/api/auth", authRoutes);
@@ -34,7 +35,7 @@ app.get("/", (req, res) => {
   res.send("Blog API is running...");
 });
 
-// Not Found & Error Handler (must come after routes)
+// Not Found & Error Handler
 app.use(notFound);
 app.use(errorHandler);
 

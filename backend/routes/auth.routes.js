@@ -27,4 +27,5 @@ router.get("/users", protect, isAdmin, getAllUsers);
 router.put("/users/:id", protect, isAdmin, upload.single("avatar"), updateUserProfile);
 router.delete("/users/:id", protect, isAdmin, deleteUserById);
 
+
 export default router;

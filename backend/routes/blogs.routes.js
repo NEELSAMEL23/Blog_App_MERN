@@ -28,9 +28,10 @@ router.patch("/:id/like", protect, toggleLikeBlog);
 
 // ADMIN ROUTES
 router.get("/admin/all", protect, isAdmin, getAllBlogsAdmin);
+router.get("/:id", protect, getBlogById); // ✅ keep at the bottom
 
 
 // DYNAMIC ID ROUTE LAST
-router.get("/:id", getBlogById); // ✅ keep at the bottom
+
 
 export default router;

@@ -10,104 +10,115 @@ export default function Register() {
         name: "",
         email: "",
         password: "",
-        role: "user",
+        avatar: null,
     });
-    const [err, setErr] = useState("");
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
-    const handleChange = (e) =>
-        setForm({ ...form, [e.target.name]: e.target.value });
+    const handleChange = (e) => {
+        const { name, value, files } = e.target;
+        if (name === "avatar") {
+            setForm((prev) => ({ ...prev, avatar: files[0] }));
+        } else {
+            setForm((prev) => ({ ...prev, [name]: value }));
+        }
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setErr("");
+        setError("");
+        setLoading(true);
+
         try {
-            const data = await register(form);
-            if (data.role === "admin") navigate("/admin/dashboard");
-            else navigate("/user/dashboard");
-        } catch (error) {
-            setErr(error?.response?.data?.message || "Registration failed");
+            const formData = new FormData();
+            formData.append("name", form.name);
+            formData.append("email", form.email);
+            formData.append("password", form.password);
+            if (form.avatar) {
+                formData.append("avatar", form.avatar);
+            }
+
+            const data = await register(formData);
+
+            if (data) navigate("/");
+        } catch (err) {
+            setError(err?.response?.data?.message || "Registration failed");
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
             <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-8">
-                <h2 className="text-2xl font-bold text-center text-gray-700 mb-6">
-                    Register
-                </h2>
+                <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Create an Account</h2>
 
-                {err && <p className="text-red-500 text-sm mb-4 text-center">{err}</p>}
+                {error && (
+                    <p className="text-red-500 text-sm mb-4 text-center">{error}</p>
+                )}
 
                 <form onSubmit={handleSubmit} className="space-y-5">
                     {/* Name */}
                     <div>
-                        <label className="block text-sm font-medium text-gray-600 mb-1">
-                            Name
-                        </label>
+                        <label className="block text-sm font-medium text-gray-600 mb-1">Name</label>
                         <input
                             name="name"
                             value={form.name}
                             onChange={handleChange}
                             required
-                            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="Enter your name"
+                            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
                     {/* Email */}
                     <div>
-                        <label className="block text-sm font-medium text-gray-600 mb-1">
-                            Email
-                        </label>
+                        <label className="block text-sm font-medium text-gray-600 mb-1">Email</label>
                         <input
                             name="email"
                             type="email"
                             value={form.email}
                             onChange={handleChange}
                             required
-                            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="Enter your email"
+                            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
                     {/* Password */}
                     <div>
-                        <label className="block text-sm font-medium text-gray-600 mb-1">
-                            Password
-                        </label>
+                        <label className="block text-sm font-medium text-gray-600 mb-1">Password</label>
                         <input
                             name="password"
                             type="password"
                             value={form.password}
                             onChange={handleChange}
                             required
-                            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="Enter your password"
+                            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
-                    {/* Role */}
+                    {/* Avatar */}
                     <div>
-                        <label className="block text-sm font-medium text-gray-600 mb-1">
-                            Role
-                        </label>
-                        <select
-                            name="role"
-                            value={form.role}
+                        <label className="block text-sm font-medium text-gray-600 mb-1">Avatar (optional)</label>
+                        <input
+                            name="avatar"
+                            type="file"
+                            accept="image/*"
                             onChange={handleChange}
-                            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        >
-                            <option value="user">User</option>
-                            <option value="admin">Admin</option>
-                        </select>
+                            className="w-full text-sm text-gray-700"
+                        />
                     </div>
 
-                    {/* Submit Button */}
+                    {/* Submit */}
                     <button
                         type="submit"
-                        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg transition duration-200"
+                        disabled={loading}
+                        className={`w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg transition duration-200 ${loading ? "opacity-70 cursor-not-allowed" : ""
+                            }`}
                     >
-                        Register
+                        {loading ? "Registering..." : "Register"}
                     </button>
                 </form>
 

@@ -7,64 +7,81 @@ export default function Login() {
     const { login } = useAuth();
 
     const [form, setForm] = useState({ email: "", password: "" });
-    const [err, setErr] = useState("");
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
-    const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setForm((prev) => ({ ...prev, [name]: value }));
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setErr("");
+        setError("");
+        setLoading(true);
+
         try {
             const data = await login(form.email, form.password);
-            if (data.role === "admin") navigate("/admin/dashboard");
-            else navigate("/user/dashboard");
-        } catch (error) {
-            setErr(error?.response?.data?.message || "Login failed");
+            if (data) navigate("/");
+        } catch (err) {
+            setError(err?.response?.data?.message || "Login failed");
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
-            <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-8">
-                <h2 className="text-2xl font-bold text-center text-gray-700 mb-6">Login</h2>
+        <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
+            <div className="w-full max-w-md bg-white shadow-md rounded-xl p-8">
+                <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Sign In</h2>
 
-                {err && <p className="text-red-500 text-sm mb-4 text-center">{err}</p>}
+                {error && (
+                    <p className="text-red-500 text-sm mb-4 text-center">{error}</p>
+                )}
 
                 <form onSubmit={handleSubmit} className="space-y-5">
                     {/* Email */}
                     <div>
-                        <label className="block text-sm font-medium text-gray-600 mb-1">Email</label>
+                        <label htmlFor="email" className="block text-sm font-medium text-gray-600 mb-1">
+                            Email
+                        </label>
                         <input
+                            id="email"
                             name="email"
                             type="email"
                             value={form.email}
                             onChange={handleChange}
                             required
-                            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="Enter your email"
+                            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
                     {/* Password */}
                     <div>
-                        <label className="block text-sm font-medium text-gray-600 mb-1">Password</label>
+                        <label htmlFor="password" className="block text-sm font-medium text-gray-600 mb-1">
+                            Password
+                        </label>
                         <input
+                            id="password"
                             name="password"
                             type="password"
                             value={form.password}
                             onChange={handleChange}
                             required
-                            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="Enter your password"
+                            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
-                    {/* Button */}
+                    {/* Submit Button */}
                     <button
                         type="submit"
-                        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg transition duration-200"
+                        disabled={loading}
+                        className={`w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg transition duration-200 ${loading ? "opacity-70 cursor-not-allowed" : ""
+                            }`}
                     >
-                        Login
+                        {loading ? "Logging in..." : "Login"}
                     </button>
                 </form>
 

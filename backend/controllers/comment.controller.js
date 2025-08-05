@@ -11,22 +11,33 @@ export const addComment = async (req, res) => {
             return res.status(400).json({ message: "Comment cannot be empty" });
         }
 
+        // Find the blog post
         const post = await Blog.findById(postId);
-        if (!post) return res.status(404).json({ message: "Post not found" });
+        if (!post) {
+            return res.status(404).json({ message: "Post not found" });
+        }
 
+        // Create the comment
         const comment = await Comment.create({
             content,
             user: req.user._id,
             post: postId,
         });
 
+        // ✅ Push comment ID to blog's comments array
+        post.comments.push(comment._id);
+        await post.save();
+
+        // Populate user info in comment response
         const populated = await comment.populate("user", "name avatar");
 
         res.status(201).json(populated);
     } catch (err) {
+        console.error("Error adding comment:", err.message);
         res.status(500).json({ message: err.message });
     }
 };
+
 
 // Delete a comment
 export const deleteComment = async (req, res) => {
