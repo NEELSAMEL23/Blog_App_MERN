@@ -7,7 +7,7 @@ A complete blog platform built using <b>MongoDB, Express.js, React, and Node.js<
 Features <b>role-based access (Admin/User)</b>, blog CRUD, likes, comments, JWT authentication, and Cloudinary image uploads.
 </p>
 
-<h2align="center">🌐 Live Links</h2>
+<h2 align="center">🌐 Live Links</h2>
 <p align="center">
   <a href="https://blog-app-mern-ten.vercel.app/">
     <img src="https://img.shields.io/badge/Frontend-Live%20Demo-0A66C2?style=for-the-badge&logo=react&logoColor=white" />
@@ -16,6 +16,7 @@ Features <b>role-based access (Admin/User)</b>, blog CRUD, likes, comments, JWT 
     <img src="https://img.shields.io/badge/Backend-Live%20API-4CAF50?style=for-the-badge&logo=node.js&logoColor=white" />
   </a>
 </p>
+
 
 ---
 
