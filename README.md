@@ -1,22 +1,18 @@
-<!-- README.md -->
-
-<h1 align="center">📰 MERN Blog App – Full Stack</h1>
+# 📰 MERN Blog App – Full Stack
 
 <p align="center">
 A complete blog platform built using <b>MongoDB, Express.js, React, and Node.js</b>.<br>
 Features <b>role-based access (Admin/User)</b>, blog CRUD, likes, comments, JWT authentication, and Cloudinary image uploads.
 </p>
 
-<h2 align="center">🌐 Live Links</h2>
 <p align="center">
   <a href="https://blog-app-mern-ten.vercel.app/">
-    <img src="https://img.shields.io/badge/Frontend-Live%20Demo-0A66C2?style=for-the-badge&logo=react&logoColor=white" />
+    <img src="https://img.shields.io/badge/Frontend-Live%20Demo-0A66C2?style=for-the-badge&logo=react&logoColor=white" alt="Frontend Live Demo"/>
   </a>
   <a href="https://blog-app-mern-xzu7.onrender.com">
-    <img src="https://img.shields.io/badge/Backend-Live%20API-4CAF50?style=for-the-badge&logo=node.js&logoColor=white" />
+    <img src="https://img.shields.io/badge/Backend-Live%20API-4CAF50?style=for-the-badge&logo=node.js&logoColor=white" alt="Backend Live API"/>
   </a>
 </p>
-
 
 ---
 
@@ -25,7 +21,7 @@ Features <b>role-based access (Admin/User)</b>, blog CRUD, likes, comments, JWT 
 ### **Frontend**
 - 🔐 **Authentication** — Register, Login, Logout
 - 🖼 **Avatar Upload** (Cloudinary)
-- ✏ **Blog Management** — Create, edit, delete blogs
+- ✏ **Blog Management** — Create, Edit, Delete blogs
 - ❤️ Like / Unlike blogs
 - 🔍 Filter & Search blogs
 - 🌐 Public & Private blogs
@@ -86,7 +82,3 @@ BLOG_APP_MERN/
 │   │   ├── utils/
 │   │   └── App.jsx
 │   └── public/
-
-
-
-
