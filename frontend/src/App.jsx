@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 
-import Login from "./pages/Auth/Login";
-import Register from "./pages/Auth/Register";
-import NotFound from "./pages/NotFound";
+import Login from "./Pages/Auth/Login";
+import Register from "./Pages/Auth/Register";
+import NotFound from "./Pages/NotFound";
 import ProtectedRoute from "./utils/ProtectedRoute";
 
-import AdminDashboard from "./pages/Admin/AdminDashboard";
+
 import GetAllUsers from "./Pages/Admin/GetUsers";
 import ManageProfiles from "./Pages/Admin/ManageProfiles";
 import UserDashboard from "./Pages/Users/UserDashboard";
