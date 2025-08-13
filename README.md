@@ -1,208 +1,146 @@
-📰 MERN Blog App – Full Stack (Frontend + Backend)
-<p align="center"> A full-featured <b>Blog Application</b> built with <b>MongoDB, Express.js, React, and Node.js</b>.<br> Supports role-based access (Admin/User), blog management, comments, likes, and profile updates — with JWT authentication and Cloudinary avatar uploads. </p>
-🚀 Features
-Frontend
-🔐 Authentication — Register, Login, Logout
+<!-- README.md -->
 
-🖼 Avatar Upload on Registration (Cloudinary)
+<div style="font-family: Arial, sans-serif; padding: 20px; border-radius: 10px; background: #f9f9f9;">
 
-✏ Blog Management
+<h1 style="text-align:center; color: #2d89ef;">📰 MERN Blog App – Full Stack</h1>
+<p style="text-align:center; font-size: 1.1rem;">
+A full-featured <b>Blog Application</b> built with <b>MongoDB, Express.js, React, and Node.js</b>.<br>
+Supports role-based access (<b>Admin/User</b>), blog management, comments, likes, and profile updates — with <b>JWT authentication</b> and <b>Cloudinary avatar uploads</b>.
+</p>
 
-Create, edit, delete blogs
+<hr>
 
-Like/unlike blogs
+<h2 style="color:#2d89ef;">🚀 Features</h2>
 
-Filter/search blogs
+<h3>Frontend</h3>
+<ul>
+  <li>🔐 <b>Authentication</b> — Register, Login, Logout</li>
+  <li>🖼 Avatar Upload on Registration (Cloudinary)</li>
+  <li>✏ Blog Management — Create, edit, delete blogs</li>
+  <li>❤️ Like/unlike blogs</li>
+  <li>🔍 Filter/search blogs</li>
+  <li>🌐 Public & Private blog support</li>
+  <li>💬 Comments — Add, edit, delete</li>
+  <li>👤 Profile Management — View & update profile</li>
+  <li>🛡 Protected Routes (Role-based access)</li>
+  <li>📱 Responsive UI (Tailwind CSS)</li>
+</ul>
 
-Public & private blog support
+<h3>Backend</h3>
+<ul>
+  <li>🔐 JWT Authentication</li>
+  <li>🖼 Cloudinary Image Upload</li>
+  <li>✏ Blog CRUD API</li>
+  <li>💬 Comment API</li>
+  <li>🛡 Role-based Access Control</li>
+  <li>⚠ Error Handling Middleware</li>
+  <li>🌐 CORS Enabled</li>
+</ul>
 
-💬 Comments — Add, edit, delete comments
+<hr>
 
-👤 Profile Management — View & update profile
+<h2 style="color:#2d89ef;">🛠 Tech Stack</h2>
+<pre style="background: #eee; padding: 10px; border-radius: 5px;">
+Frontend                     Backend
+React (Hooks & Context API)  Node.js
+Tailwind CSS                 Express.js
+Axios                        MongoDB + Mongoose
+React Router DOM             JWT Authentication
+Lucide React                 bcryptjs, dotenv, cors
+React Hot Toast
+</pre>
 
-🛡 Protected Routes with role-based access (Admin/User)
+<hr>
 
-📱 Responsive UI with Tailwind CSS
-
-Backend
-🔐 JWT Authentication — Secure login & register
-
-🖼 Image Uploads — Integrated with Cloudinary
-
-✏ Blog API — Create, read, update, delete blogs
-
-💬 Comment API — Add, edit, delete comments
-
-🛡 Role-based Access Control — Admin/User permissions
-
-⚠ Error Handling Middleware
-
-🌐 CORS Enabled for frontend-backend communication
-
-🎯 Role Permissions
-Admin
-
-Manage all blogs
-
-Manage all users
-
-Moderate comments
-
-User
-
-Manage own blogs
-
-Edit own profile
-
-Comment & like blogs
-
-🛠 Tech Stack
-Frontend	Backend
-React ^19.1.0	Node.js
-React Router DOM ^7.8.0	Express.js
-Tailwind CSS ^4.1.11 (+ @tailwindcss/vite)	MongoDB + Mongoose
-Axios ^1.11.0	JWT (jsonwebtoken)
-Lucide React ^0.536.0	bcryptjs
-React Hot Toast ^2.5.2	dotenv
-cors
-multer
-cloudinary
-
-📂 Folder Structure
-pgsql
-Copy
-Edit
+<h2 style="color:#2d89ef;">📂 Folder Structure</h2>
+<pre style="background: #eee; padding: 10px; border-radius: 5px;">
 BLOG_APP_MERN/
-│
 ├── backend/
 │   ├── config/
-│   │   └── db.js
-│   │
 │   ├── controllers/
-│   │   ├── auth.controller.js
-│   │   ├── blog.controller.js
-│   │   ├── comment.controller.js
-│   │   └── upload.controller.js
-│   │
 │   ├── middleware/
-│   │   ├── auth.middleware.js
-│   │   ├── error.middleware.js
-│   │   ├── isAdmin.js
-│   │   └── upload.js
-│   │
 │   ├── models/
-│   │   ├── Blog.js
-│   │   ├── Comment.js
-│   │   └── User.js
-│   │
 │   ├── routes/
-│   │   ├── auth.routes.js
-│   │   ├── blogs.routes.js
-│   │   └── comment.routes.js
-│   │
 │   ├── utils/
-│   │   ├── cloudinary.js
-│   │   └── generateToken.js
-│   │
-│   ├── .env
-│   ├── package-lock.json
-│   ├── package.json
-│   ├── Routes_API.js
 │   └── server.js
 │
 ├── frontend/
 │   ├── src/
-│   │   ├── assets/
-│   │   ├── components/
-│   │   ├── context/
-│   │   ├── layouts/
-│   │   ├── Pages/
-│   │   ├── Services/
-│   │   ├── utils/
-│   │   ├── App.css
-│   │   ├── App.jsx
-│   │   ├── index.css
-│   │   ├── main.jsx
-│   │   └── index.html
 │   ├── .env
-│   ├── .gitignore
-│   ├── bun.lockb
-│   └── eslint.config.js
-⚙️ Environment Variables
-Frontend .env
-env
-Copy
-Edit
+│   └── main.jsx
+</pre>
+
+<hr>
+
+<h2 style="color:#2d89ef;">⚙️ Environment Variables</h2>
+<p><b>Frontend</b></p>
+<pre style="background: #eee; padding: 10px; border-radius: 5px;">
 VITE_API_BASE_URL=http://localhost:8000
-Backend .env
-env
-Copy
-Edit
+</pre>
+<p><b>Backend</b></p>
+<pre style="background: #eee; padding: 10px; border-radius: 5px;">
 PORT=8000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
 CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
 CLOUDINARY_API_KEY=your_cloudinary_api_key
 CLOUDINARY_API_SECRET=your_cloudinary_api_secret
-📦 Installation & Setup
-1️⃣ Clone the repository
-sh
-Copy
-Edit
-git clone https://github.com/yourusername/mern-blog-app.git
-cd mern-blog-app
-2️⃣ Install dependencies
-Backend
-sh
-Copy
-Edit
+</pre>
+
+<hr>
+
+<h2 style="color:#2d89ef;">📦 Installation & Setup</h2>
+<ol>
+<li><b>Clone Repository</b>
+<pre>git clone https://github.com/yourusername/mern-blog-app.git
+cd mern-blog-app</pre></li>
+<li><b>Install Dependencies</b>
+<pre># Backend
 cd backend
 npm install
-Frontend
-sh
-Copy
-Edit
+
+# Frontend
 cd ../frontend
-npm install
-3️⃣ Run the applications
-Backend
-sh
-Copy
-Edit
+npm install</pre></li>
+<li><b>Run Applications</b>
+<pre># Backend
 npm run dev
-Frontend
-sh
-Copy
-Edit
-npm run dev
-📡 API Endpoints
-Auth
-Method	Endpoint	Description
-POST	/api/auth/register	Register new user
-POST	/api/auth/login	Login user
-GET	/api/auth/profile	Get current user profile
-PUT	/api/auth/profile	Update current user profile
 
-Admin
-Method	Endpoint	Description
-GET	/api/auth/users	Get all users
-PUT	/api/auth/users/:id	Update user by ID
-DELETE	/api/auth/users/:id	Delete user by ID
+# Frontend
+npm run dev</pre></li>
+</ol>
 
-Blogs
-Method	Endpoint	Description
-GET	/api/blogs	Get public blogs
-GET	/api/blogs/user/me	Get logged-in user's blogs
-POST	/api/blogs	Create blog
-PUT	/api/blogs/:id	Update blog by ID
-DELETE	/api/blogs/:id	Delete blog by ID
-PATCH	/api/blogs/:id/like	Like/unlike blog
-GET	/api/blogs/admin/all	Get all blogs (Admin)
+<hr>
 
-Comments
-Method	Endpoint	Description
-POST	/api/comments/:postId	Add comment to blog
-GET	/api/comments/:postId	Get all comments for blog
-GET	/api/comments/single/:id	Get single comment
-PUT	/api/comments/:id	Update comment by ID
-DELETE	/api/comments/:id	Delete comment by ID
+<h2 style="color:#2d89ef;">📡 API Endpoints</h2>
+<h4>Auth</h4>
+<pre>
+POST /api/auth/register   → Register new user
+POST /api/auth/login      → Login user
+GET  /api/auth/profile    → Get current user profile
+PUT  /api/auth/profile    → Update profile
+</pre>
+
+<h4>Blogs</h4>
+<pre>
+GET    /api/blogs              → Get public blogs
+POST   /api/blogs              → Create blog
+PUT    /api/blogs/:id          → Update blog
+DELETE /api/blogs/:id          → Delete blog
+PATCH  /api/blogs/:id/like     → Like/unlike blog
+</pre>
+
+<h4>Comments</h4>
+<pre>
+POST   /api/comments/:postId   → Add comment
+PUT    /api/comments/:id       → Update comment
+DELETE /api/comments/:id       → Delete comment
+</pre>
+
+<hr>
+
+<p style="text-align:center; font-size: 0.9rem;">
+Made with ❤️ using MERN Stack
+</p>
+
+</div>
