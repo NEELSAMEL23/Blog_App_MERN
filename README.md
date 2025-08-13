@@ -1,58 +1,77 @@
-# 📰 MERN Blog App – Frontend
+📰 MERN Blog App – Full Stack (Frontend + Backend)
+<p align="center"> A full-featured <b>Blog Application</b> built with <b>MongoDB, Express.js, React, and Node.js</b>.<br> Supports role-based access (Admin/User), blog management, comments, likes, and profile updates — with JWT authentication and Cloudinary avatar uploads. </p>
+🚀 Features
+Frontend
+🔐 Authentication — Register, Login, Logout
 
-<p align="center">
-  A full-featured <b>Blog Application</b> built with <b>MongoDB, Express.js, React, and Node.js</b>.<br>
-  Supports role-based access (Admin/User), blog management, comments, likes, and profile updates — with JWT authentication and Cloudinary avatar uploads.
-</p>
+🖼 Avatar Upload on Registration (Cloudinary)
 
----
+✏ Blog Management
 
-## 🚀 Features
+Create, edit, delete blogs
 
-### **Frontend**
-* 🔐 **Authentication** — Register, Login, Logout
-* 🖼 **Avatar Upload** on Registration (Cloudinary)
-* ✏ **Blog Management**  
-  - Create, edit, delete blogs  
-  - Like/unlike blogs  
-  - Filter/search blogs  
-  - Public & private blog support
-* 💬 **Comments** — Add, edit, delete comments
-* 👤 **Profile Management** — View & update profile
-* 🛡 **Protected Routes** with role-based access (Admin/User)
-* 📱 **Responsive UI** with Tailwind CSS
+Like/unlike blogs
 
-### **Role Permissions**
-**Admin**
-- Manage all blogs
-- Manage all users
-- Moderate comments
+Filter/search blogs
 
-**User**
-- Manage own blogs
-- Edit own profile
-- Comment & like blogs
+Public & private blog support
 
----
+💬 Comments — Add, edit, delete comments
 
-## 🛠 Tech Stack
+👤 Profile Management — View & update profile
 
-| **Frontend**                               | **Backend**                |
-| ------------------------------------------ | -------------------------- |
-| React ^19.1.0                              | Node.js                    |
-| React Router DOM ^7.8.0                    | Express.js                 |
-| Tailwind CSS ^4.1.11 (+ @tailwindcss/vite) | MongoDB + Mongoose         |
-| Axios ^1.11.0                              | JWT (jsonwebtoken)         |
-| Lucide React ^0.536.0                      | bcryptjs                   |
-| React Hot Toast ^2.5.2                     | dotenv                      |
-|                                            | cors                        |
-|                                            | multer                      |
-|                                            | cloudinary                  |
+🛡 Protected Routes with role-based access (Admin/User)
 
----
+📱 Responsive UI with Tailwind CSS
 
-## 📂 Folder Structure
+Backend
+🔐 JWT Authentication — Secure login & register
 
+🖼 Image Uploads — Integrated with Cloudinary
+
+✏ Blog API — Create, read, update, delete blogs
+
+💬 Comment API — Add, edit, delete comments
+
+🛡 Role-based Access Control — Admin/User permissions
+
+⚠ Error Handling Middleware
+
+🌐 CORS Enabled for frontend-backend communication
+
+🎯 Role Permissions
+Admin
+
+Manage all blogs
+
+Manage all users
+
+Moderate comments
+
+User
+
+Manage own blogs
+
+Edit own profile
+
+Comment & like blogs
+
+🛠 Tech Stack
+Frontend	Backend
+React ^19.1.0	Node.js
+React Router DOM ^7.8.0	Express.js
+Tailwind CSS ^4.1.11 (+ @tailwindcss/vite)	MongoDB + Mongoose
+Axios ^1.11.0	JWT (jsonwebtoken)
+Lucide React ^0.536.0	bcryptjs
+React Hot Toast ^2.5.2	dotenv
+cors
+multer
+cloudinary
+
+📂 Folder Structure
+pgsql
+Copy
+Edit
 BLOG_APP_MERN/
 │
 ├── backend/
@@ -92,88 +111,71 @@ BLOG_APP_MERN/
 │   └── server.js
 │
 ├── frontend/
-│   ├── node_modules/
-│   ├── public/
 │   ├── src/
 │   │   ├── assets/
-│   │   │
 │   │   ├── components/
-│   │   │   ├── Footer.jsx
-│   │   │   ├── Navbar.jsx
-│   │   │   └── Sidebar.jsx
-│   │   │
 │   │   ├── context/
-│   │   │   └── AuthContext.jsx
-│   │   │
 │   │   ├── layouts/
-│   │   │   └── Layout.jsx
-│   │   │
 │   │   ├── Pages/
-│   │   │   ├── Admin/
-│   │   │   │   ├── AdminDashboard.jsx
-│   │   │   │   ├── GetAllBlocks.jsx
-│   │   │   │   ├── GetUsers.jsx
-│   │   │   │   └── ManageProfiles.jsx
-│   │   │   │
-│   │   │   ├── Auth/
-│   │   │   │   ├── Login.jsx
-│   │   │   │   └── Register.jsx
-│   │   │   │
-│   │   │   ├── Blog/
-│   │   │   │   ├── AllBlogs.jsx
-│   │   │   │   ├── CreateBlog.jsx
-│   │   │   │   ├── ManageBlock.jsx
-│   │   │   │   └── MyBlogs.jsx
-│   │   │   │
-│   │   │   ├── Users/
-│   │   │   │   ├── ManageMyProfile.jsx
-│   │   │   │   └── UserDashboard.jsx
-│   │   │   │
-│   │   │   └── NotFound.jsx
-│   │   │
 │   │   ├── Services/
-│   │   │   ├── apiPaths.js
-│   │   │   ├── authService.js
-│   │   │   ├── axiosInstance.jsx
-│   │   │   ├── blogService.js
-│   │   │   └── commenService.jsx
-│   │   │
 │   │   ├── utils/
-│   │   │   └── ProtectedRoute.jsx
-│   │   │
 │   │   ├── App.css
 │   │   ├── App.jsx
 │   │   ├── index.css
 │   │   ├── main.jsx
 │   │   └── index.html
-│   │
 │   ├── .env
 │   ├── .gitignore
 │   ├── bun.lockb
 │   └── eslint.config.js
-
-
-
----
-
-## ⚙️ Environment Variables
-Create a `.env` file inside the **frontend** folder:
-
-```env
+⚙️ Environment Variables
+Frontend .env
+env
+Copy
+Edit
 VITE_API_BASE_URL=http://localhost:8000
+Backend .env
+env
+Copy
+Edit
+PORT=8000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
 📦 Installation & Setup
-
 1️⃣ Clone the repository
-git clone https://github.com/yourusername/mern-blog-frontend.git
-cd mern-blog-frontend
-
+sh
+Copy
+Edit
+git clone https://github.com/yourusername/mern-blog-app.git
+cd mern-blog-app
 2️⃣ Install dependencies
+Backend
+sh
+Copy
+Edit
+cd backend
 npm install
-
-3️⃣ Run the application
+Frontend
+sh
+Copy
+Edit
+cd ../frontend
+npm install
+3️⃣ Run the applications
+Backend
+sh
+Copy
+Edit
 npm run dev
-
-📡 API Endpoints Used
+Frontend
+sh
+Copy
+Edit
+npm run dev
+📡 API Endpoints
 Auth
 Method	Endpoint	Description
 POST	/api/auth/register	Register new user
