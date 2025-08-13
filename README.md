@@ -1,46 +1,51 @@
 <!-- README.md -->
 
-<div style="font-family: Arial, sans-serif; padding: 20px; border-radius: 10px; background: #f9f9f9;">
+# 📰 MERN Blog App – Full Stack
 
-<h1 style="text-align:center; color: #2d89ef;">📰 MERN Blog App – Full Stack</h1>
-<p style="text-align:center; font-size: 1.1rem;">
-A full-featured <b>Blog Application</b> built with <b>MongoDB, Express.js, React, and Node.js</b>.<br>
-Supports role-based access (<b>Admin/User</b>), blog management, comments, likes, and profile updates — with <b>JWT authentication</b> and <b>Cloudinary avatar uploads</b>.
+> **A complete blog platform built using MongoDB, Express.js, React, and Node.js (MERN Stack)**  
+> Features **role-based access (Admin/User)**, blog CRUD, likes, comments, JWT authentication, and Cloudinary image uploads.
+
+---
+
+## 🌐 Live Links
+<p align="center">
+  <a href="https://blog-app-mern-ten.vercel.app/">
+    <img src="https://img.shields.io/badge/Frontend-Live%20Demo-0A66C2?style=for-the-badge&logo=react&logoColor=white" />
+  </a>
+  <a href="https://blog-app-mern-xzu7.onrender.com">
+    <img src="https://img.shields.io/badge/Backend-Live%20API-4CAF50?style=for-the-badge&logo=node.js&logoColor=white" />
+  </a>
 </p>
 
-<hr>
+---
 
-<h2 style="color:#2d89ef;">🚀 Features</h2>
+## 🚀 Features
 
-<h3>Frontend</h3>
-<ul>
-  <li>🔐 <b>Authentication</b> — Register, Login, Logout</li>
-  <li>🖼 Avatar Upload on Registration (Cloudinary)</li>
-  <li>✏ Blog Management — Create, edit, delete blogs</li>
-  <li>❤️ Like/unlike blogs</li>
-  <li>🔍 Filter/search blogs</li>
-  <li>🌐 Public & Private blog support</li>
-  <li>💬 Comments — Add, edit, delete</li>
-  <li>👤 Profile Management — View & update profile</li>
-  <li>🛡 Protected Routes (Role-based access)</li>
-  <li>📱 Responsive UI (Tailwind CSS)</li>
-</ul>
+### **Frontend**
+- 🔐 **Authentication** — Register, Login, Logout
+- 🖼 **Avatar Upload** (Cloudinary)
+- ✏ **Blog Management** — Create, edit, delete blogs
+- ❤️ Like / Unlike blogs
+- 🔍 Filter & Search blogs
+- 🌐 Public & Private blogs
+- 💬 Comment system (Add, Edit, Delete)
+- 👤 Profile management (View & Update)
+- 🛡 Protected Routes (Role-based)
+- 📱 Responsive UI (Tailwind CSS)
 
-<h3>Backend</h3>
-<ul>
-  <li>🔐 JWT Authentication</li>
-  <li>🖼 Cloudinary Image Upload</li>
-  <li>✏ Blog CRUD API</li>
-  <li>💬 Comment API</li>
-  <li>🛡 Role-based Access Control</li>
-  <li>⚠ Error Handling Middleware</li>
-  <li>🌐 CORS Enabled</li>
-</ul>
+### **Backend**
+- 🔐 JWT Authentication
+- 🖼 Cloudinary Image Upload
+- ✏ Blog CRUD API
+- 💬 Comment API
+- 🛡 Role-based Access Control
+- ⚠ Error Handling Middleware
+- 🌐 CORS Enabled
 
-<hr>
-
+---
 
 ## 🛠 Tech Stack
+
 | **Frontend**                               | **Backend**                |
 | ------------------------------------------ | -------------------------- |
 | React ^19.1.0                              | Node.js                    |
@@ -54,111 +59,33 @@ Supports role-based access (<b>Admin/User</b>), blog management, comments, likes
 |                                            | express-fileupload ^1.5.2  |
 |                                            | cloudinary ^2.7.0          |
 
+---
 
-<hr>
+## 📂 Folder Structure
 
-<h2 style="color:#2d89ef;">📂 Folder Structure</h2>
-<pre style="background: #eee; padding: 10px; border-radius: 5px;">
+```plaintext
 BLOG_APP_MERN/
 │
 ├── backend/
 │   ├── config/
-│   │   └── db.js
-│   │
 │   ├── controllers/
-│   │   ├── auth.controller.js
-│   │   ├── blog.controller.js
-│   │   ├── comment.controller.js
-│   │   └── upload.controller.js
-│   │
 │   ├── middleware/
-│   │   ├── auth.middleware.js
-│   │   ├── error.middleware.js
-│   │   ├── isAdmin.js
-│   │   └── upload.js
-│   │
 │   ├── models/
-│   │   ├── Blog.js
-│   │   ├── Comment.js
-│   │   └── User.js
-│   │
 │   ├── routes/
-│   │   ├── auth.routes.js
-│   │   ├── blogs.routes.js
-│   │   └── comment.routes.js
-│   │
 │   ├── utils/
-│   │   ├── cloudinary.js
-│   │   └── generateToken.js
-│   │
-│   ├── .env
-│   ├── package-lock.json
-│   ├── package.json
-│   ├── Routes_API.js
 │   └── server.js
 │
 ├── frontend/
-│   ├── node_modules/
-│   ├── public/
 │   ├── src/
-│   │   ├── assets/
-│   │   │
 │   │   ├── components/
-│   │   │   ├── Footer.jsx
-│   │   │   ├── Navbar.jsx
-│   │   │   └── Sidebar.jsx
-│   │   │
 │   │   ├── context/
-│   │   │   └── AuthContext.jsx
-│   │   │
 │   │   ├── layouts/
-│   │   │   └── Layout.jsx
-│   │   │
 │   │   ├── Pages/
-│   │   │   ├── Admin/
-│   │   │   │   ├── AdminDashboard.jsx
-│   │   │   │   ├── GetAllBlocks.jsx
-│   │   │   │   ├── GetUsers.jsx
-│   │   │   │   └── ManageProfiles.jsx
-│   │   │   │
-│   │   │   ├── Auth/
-│   │   │   │   ├── Login.jsx
-│   │   │   │   └── Register.jsx
-│   │   │   │
-│   │   │   ├── Blog/
-│   │   │   │   ├── AllBlogs.jsx
-│   │   │   │   ├── CreateBlog.jsx
-│   │   │   │   ├── ManageBlock.jsx
-│   │   │   │   └── MyBlogs.jsx
-│   │   │   │
-│   │   │   ├── Users/
-│   │   │   │   ├── ManageMyProfile.jsx
-│   │   │   │   └── UserDashboard.jsx
-│   │   │   │
-│   │   │   └── NotFound.jsx
-│   │   │
 │   │   ├── Services/
-│   │   │   ├── apiPaths.js
-│   │   │   ├── authService.js
-│   │   │   ├── axiosInstance.jsx
-│   │   │   ├── blogService.js
-│   │   │   └── commenService.jsx
-│   │   │
 │   │   ├── utils/
-│   │   │   └── ProtectedRoute.jsx
-│   │   │
-│   │   ├── App.css
-│   │   ├── App.jsx
-│   │   ├── index.css
-│   │   ├── main.jsx
-│   │   └── index.html
-│   │
-│   ├── .env
-│   ├── .gitignore
-│   ├── bun.lockb
-│   └── eslint.config.js
+│   │   └── App.jsx
+│   └── public/
 
-</pre>
 
 <hr>
 
