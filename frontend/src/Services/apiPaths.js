@@ -1,4 +1,4 @@
-export const BASEURL = "http://localhost:8000";
+export const BASEURL = "https://blog-app-mern-xzu7.onrender.com";
 
 export const API_PATHS = {
     AUTH: {
