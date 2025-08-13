@@ -82,3 +82,96 @@ BLOG_APP_MERN/
 │   │   ├── utils/
 │   │   └── App.jsx
 │   └── public/
+
+```
+
+---
+
+## ⚙️ Environment Variables
+
+## Frontend
+```
+VITE_API_BASE_URL=https://blog-app-mern-xzu7.onrender.com
+```
+
+Create a `.env` file inside the **backend** folder:
+
+##
+```env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+CLOUDINARY_CLOUD_NAME=your_cloudinary_name
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+```
+
+---
+
+## 📦 Installation & Setup
+
+1️⃣ **Clone the repository**
+
+```bash
+git clone https://github.com/NEELSAMEL23/Blog_App_MERN.git
+cd Blog_App_MERN
+```
+
+2️⃣ **Install dependencies**
+
+# Backend
+cd backend
+npm install
+
+# Frontend
+```
+cd ../frontend
+npm install
+```
+
+3️⃣ **Run the application**
+
+
+# Backend
+```
+node server.js
+```
+# Frontend
+```
+npm run dev
+```
+
+---
+
+## 📡 API Endpoints
+
+### Auth
+
+| Method | Endpoint           | Description         |
+| ------ | ------------------ | ------------------- |
+| POST   | /api/auth/register | Register new user   |
+| POST   | /api/auth/login    | Login user          |
+| GET    | /api/auth/profile  | Get current profile |
+| PUT    | /api/auth/profile  | Update profile      |
+
+
+### Blogs
+
+| Method | Endpoint             | Description        |
+| ------ | -------------------- | ------------------ |
+| GET    | /api/blogs           | Get public blogs   |
+| POST   | /api/blogs           | Create blog        |
+| PUT    | /api/blogs/\:id      | Update blog        |
+| DELETE | /api/blogs/\:id      | Delete blog        |
+| PATCH  | /api/blogs/\:id/like | Like / Unlike blog |
+
+
+### Comments
+
+| Method | Endpoint               | Description    |
+| ------ | ---------------------- | -------------- |
+| POST   | /api/comments/\:postId | Add comment    |
+| PUT    | /api/comments/\:id     | Update comment |
+| DELETE | /api/comments/\:id     | Delete comment |
+
+<p align="center">Made with ❤️ using the MERN Stack</p> ``
