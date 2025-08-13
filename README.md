@@ -1,13 +1,13 @@
 <!-- README.md -->
 
-# 📰 MERN Blog App – Full Stack
+<h1 align="center">📰 MERN Blog App – Full Stack</h1>
 
-> **A complete blog platform built using MongoDB, Express.js, React, and Node.js (MERN Stack)**  
-> Features **role-based access (Admin/User)**, blog CRUD, likes, comments, JWT authentication, and Cloudinary image uploads.
+<p align="center">
+A complete blog platform built using <b>MongoDB, Express.js, React, and Node.js</b>.<br>
+Features <b>role-based access (Admin/User)</b>, blog CRUD, likes, comments, JWT authentication, and Cloudinary image uploads.
+</p>
 
----
-
-## 🌐 Live Links
+<h2align="center">🌐 Live Links</h2>
 <p align="center">
   <a href="https://blog-app-mern-ten.vercel.app/">
     <img src="https://img.shields.io/badge/Frontend-Live%20Demo-0A66C2?style=for-the-badge&logo=react&logoColor=white" />
