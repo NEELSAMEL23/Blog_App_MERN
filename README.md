@@ -60,19 +60,104 @@ Supports role-based access (<b>Admin/User</b>), blog management, comments, likes
 <h2 style="color:#2d89ef;">📂 Folder Structure</h2>
 <pre style="background: #eee; padding: 10px; border-radius: 5px;">
 BLOG_APP_MERN/
+│
 ├── backend/
 │   ├── config/
+│   │   └── db.js
+│   │
 │   ├── controllers/
+│   │   ├── auth.controller.js
+│   │   ├── blog.controller.js
+│   │   ├── comment.controller.js
+│   │   └── upload.controller.js
+│   │
 │   ├── middleware/
+│   │   ├── auth.middleware.js
+│   │   ├── error.middleware.js
+│   │   ├── isAdmin.js
+│   │   └── upload.js
+│   │
 │   ├── models/
+│   │   ├── Blog.js
+│   │   ├── Comment.js
+│   │   └── User.js
+│   │
 │   ├── routes/
+│   │   ├── auth.routes.js
+│   │   ├── blogs.routes.js
+│   │   └── comment.routes.js
+│   │
 │   ├── utils/
+│   │   ├── cloudinary.js
+│   │   └── generateToken.js
+│   │
+│   ├── .env
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── Routes_API.js
 │   └── server.js
 │
 ├── frontend/
+│   ├── node_modules/
+│   ├── public/
 │   ├── src/
+│   │   ├── assets/
+│   │   │
+│   │   ├── components/
+│   │   │   ├── Footer.jsx
+│   │   │   ├── Navbar.jsx
+│   │   │   └── Sidebar.jsx
+│   │   │
+│   │   ├── context/
+│   │   │   └── AuthContext.jsx
+│   │   │
+│   │   ├── layouts/
+│   │   │   └── Layout.jsx
+│   │   │
+│   │   ├── Pages/
+│   │   │   ├── Admin/
+│   │   │   │   ├── AdminDashboard.jsx
+│   │   │   │   ├── GetAllBlocks.jsx
+│   │   │   │   ├── GetUsers.jsx
+│   │   │   │   └── ManageProfiles.jsx
+│   │   │   │
+│   │   │   ├── Auth/
+│   │   │   │   ├── Login.jsx
+│   │   │   │   └── Register.jsx
+│   │   │   │
+│   │   │   ├── Blog/
+│   │   │   │   ├── AllBlogs.jsx
+│   │   │   │   ├── CreateBlog.jsx
+│   │   │   │   ├── ManageBlock.jsx
+│   │   │   │   └── MyBlogs.jsx
+│   │   │   │
+│   │   │   ├── Users/
+│   │   │   │   ├── ManageMyProfile.jsx
+│   │   │   │   └── UserDashboard.jsx
+│   │   │   │
+│   │   │   └── NotFound.jsx
+│   │   │
+│   │   ├── Services/
+│   │   │   ├── apiPaths.js
+│   │   │   ├── authService.js
+│   │   │   ├── axiosInstance.jsx
+│   │   │   ├── blogService.js
+│   │   │   └── commenService.jsx
+│   │   │
+│   │   ├── utils/
+│   │   │   └── ProtectedRoute.jsx
+│   │   │
+│   │   ├── App.css
+│   │   ├── App.jsx
+│   │   ├── index.css
+│   │   ├── main.jsx
+│   │   └── index.html
+│   │
 │   ├── .env
-│   └── main.jsx
+│   ├── .gitignore
+│   ├── bun.lockb
+│   └── eslint.config.js
+
 </pre>
 
 <hr>
