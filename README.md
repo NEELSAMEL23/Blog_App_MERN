@@ -39,16 +39,21 @@ Supports role-based access (<b>Admin/User</b>), blog management, comments, likes
 
 <hr>
 
-<h2 style="color:#2d89ef;">🛠 Tech Stack</h2>
-<pre style="background: #eee; padding: 10px; border-radius: 5px;">
-Frontend                     Backend
-React (Hooks & Context API)  Node.js
-Tailwind CSS                 Express.js
-Axios                        MongoDB + Mongoose
-React Router DOM             JWT Authentication
-Lucide React                 bcryptjs, dotenv, cors
-React Hot Toast
-</pre>
+
+## 🛠 Tech Stack
+| **Frontend**                               | **Backend**                |
+| ------------------------------------------ | -------------------------- |
+| React ^19.1.0                              | Node.js                    |
+| React DOM ^19.1.0                          | Express.js ^5.1.0          |
+| Tailwind CSS ^4.1.11 (+ @tailwindcss/vite) | MongoDB + Mongoose ^8.16.5 |
+| Axios ^1.11.0                              | JWT (jsonwebtoken ^9.0.2)  |
+| React Hot Toast ^2.5.2                     | bcryptjs ^3.0.2            |
+| React Toastify ^11.0.5                     | dotenv ^17.2.1             |
+| Lucide React ^0.536.0                      | cookie-parser ^1.4.7       |
+|                                            | multer ^2.0.2              |
+|                                            | express-fileupload ^1.5.2  |
+|                                            | cloudinary ^2.7.0          |
+
 
 <hr>
 
